@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "next-door-farm-backend", "next-door-farm-backend\next-door-farm-backend.csproj", "{013F94B6-56F7-4ABC-8F8C-72B2DFC907FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{013F94B6-56F7-4ABC-8F8C-72B2DFC907FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013F94B6-56F7-4ABC-8F8C-72B2DFC907FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013F94B6-56F7-4ABC-8F8C-72B2DFC907FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013F94B6-56F7-4ABC-8F8C-72B2DFC907FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
