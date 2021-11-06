@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">NextDoorFarm</string>
+    <string name="app_name">NextDoor Farm</string>
+
+    <!-- Shared preferences-->
+    <string name="preference_file_key">APP_SETTINGS</string>
+    <string name="user_id">user-id</string>
+
+    <!-- Login activity-->
+    <string name="activity_log_in_title">Добро пожаловать!</string>
+    <string name="activity_log_in_hint_username">Введите email / username</string>
+    <string name="activity_log_in_hint_password">Введите пароль</string>
+    <string name="activity_log_in_button_login">Войти</string>
+    <string name="activity_log_in_hint_do_not_have_account">Еще нет аккаунта?</string>
+    <string name="activity_log_in_button_sign_up">Создать аккаунт</string>
+
+    <!-- Sign up activity-->
+    <string name="activity_sign_up_title">Регистрация</string>
+    <string name="activity_sign_uo_hint_first_name">Введите имя</string>
+    <string name="activity_sign_uo_hint_last_name">Введите фамилию</string>
+    <string name="activity_sign_uo_hint_username">Введите username</string>
+    <string name="activity_sign_uo_hint_email">Введите email</string>
+    <string name="activity_sign_up_hint_password">Введите пароль</string>
+    <string name="activity_sign_up_hint_password_confirm">Введите пароль еше раз</string>
+
+    <string name="activity_log_in_sign_up_button_customer">Покупатель</string>
+    <string name="activity_log_in_sign_up_button_farmer">Фермер</string>
 </resources>

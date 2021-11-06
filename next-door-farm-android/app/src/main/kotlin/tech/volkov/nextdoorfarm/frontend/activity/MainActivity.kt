@@ -1,11 +1,14 @@
-package tech.volkov.nextdoorfarm
+package tech.volkov.nextdoorfarm.frontend.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import moxy.MvpAppCompatActivity
+import tech.volkov.nextdoorfarm.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : MvpAppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
 }

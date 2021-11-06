@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/log_in_background"
+    tools:context=".frontend.activity.SignUpActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:fontFamily="@font/pacifico"
+            android:textSize="40sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:text="@string/activity_sign_up_title"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/comfortaa"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/signUpCustomerRadioButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="1dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/comfortaa"
+                android:textStyle="bold"
+                android:text="@string/activity_log_in_sign_up_button_customer"
+                android:gravity="center"
+                android:button="@android:color/transparent"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_left_selector"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/signUpFarmerRadioButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="1dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/comfortaa"
+                android:textStyle="bold"
+                android:text="@string/activity_log_in_sign_up_button_farmer"
+                android:gravity="center"
+                android:button="@android:color/transparent"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_right_selector"/>
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/signUpFirstNameText"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_edittext_login"
+            android:fontFamily="@font/comfortaa"
+            android:hint="@string/activity_sign_uo_hint_first_name"
+            android:padding="10dp"
+            android:textCursorDrawable="@null" />
+
+        <EditText
+            android:id="@+id/signUpLastNameText"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/rounded_edittext_middle"
+            android:hint="@string/activity_sign_uo_hint_last_name"
+            android:padding="10dp"
+            android:fontFamily="@font/comfortaa"
+            android:textCursorDrawable="@null" />
+
+        <EditText
+            android:id="@+id/signUpUserNameText"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/rounded_edittext_middle"
+            android:hint="@string/activity_sign_uo_hint_username"
+            android:padding="10dp"
+            android:fontFamily="@font/comfortaa"
+            android:textCursorDrawable="@null" />
+
+        <EditText
+            android:id="@+id/signUpEmailText"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/rounded_edittext_middle"
+            android:hint="@string/activity_sign_uo_hint_email"
+            android:padding="10dp"
+            android:fontFamily="@font/comfortaa"
+            android:textCursorDrawable="@null" />
+
+        <EditText
+            android:id="@+id/signUpPasswordText"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/rounded_edittext_middle"
+            android:hint="@string/activity_sign_up_hint_password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:fontFamily="@font/comfortaa"
+            android:textCursorDrawable="@null" />
+
+        <EditText
+            android:id="@+id/signUpPasswordConfirmText"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/rounded_edittext_password"
+            android:hint="@string/activity_sign_up_hint_password_confirm"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:fontFamily="@font/comfortaa"
+            android:textCursorDrawable="@null" />
+
+        <Button
+            android:id="@+id/signUpSignUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_login_button"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/activity_log_in_button_sign_up"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
