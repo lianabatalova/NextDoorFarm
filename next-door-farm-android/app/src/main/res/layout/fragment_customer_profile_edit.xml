@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray">
+
+    <RelativeLayout
+            android:id="@+id/profileImageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/zuck" />
+
+        <EditText
+            android:id="@+id/profileFullNameEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Марк Цукерберг"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/profileHeaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@color/white"
+            android:layout_below="@+id/profileImageLayout">
+
+        <EditText
+            android:id="@+id/customerProfileUsernameEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="zuck"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/profileLoginText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerProfileUsernameEdit"
+            android:textColor="@color/gray"
+            android:layout_marginStart="20dp"
+            android:textSize="14sp"
+            android:text="Имя пользователя"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/profileAddressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileHeaderLayout"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/customerProfileAddressEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Сан-Франциско, Калифорния, США"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/profileAddressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerProfileAddressEdit"
+            android:layout_marginStart="20dp"
+            android:text="Адрес"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/customerProfileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileAddressLayout"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/customerProfileEmailEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="zuck@fb.com"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/customerProfileEmailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerProfileEmailEdit"
+            android:layout_marginStart="20dp"
+            android:text="Почта"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/customerProfilePhoneLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customerProfileLayout"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/customerProfilePhoneEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="+1 855 855-89-65"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/customerProfilePhoneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerProfilePhoneEdit"
+            android:layout_marginStart="20dp"
+            android:text="Телефон"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/customerProfileEditSaveButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/rounded_button"
+        android:text="Сохранить"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/customerProfileEditCancelButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_button"
+        android:text="Отмена"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+</RelativeLayout>

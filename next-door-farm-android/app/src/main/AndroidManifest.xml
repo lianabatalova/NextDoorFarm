@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NextDoorFarm">
-        <activity android:name=".frontend.activity.MainActivity">
-        </activity>
         <activity android:name=".frontend.activity.SignUpActivity">
         </activity>
         <activity android:name=".frontend.activity.LogInActivity">
+        </activity>
+        <activity android:name=".frontend.activity.CustomerActivity">
         </activity>
         <activity
             android:name=".frontend.activity.SplashActivity"

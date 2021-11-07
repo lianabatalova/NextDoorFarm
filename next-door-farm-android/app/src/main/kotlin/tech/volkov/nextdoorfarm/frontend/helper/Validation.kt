@@ -1,4 +1,4 @@
-package tech.volkov.nextdoorfarm.backend.helper
+package tech.volkov.nextdoorfarm.frontend.helper
 
 class Validation {
     companion object {

@@ -51,8 +51,8 @@ class LogInActivity : MvpAppCompatActivity(), LogInSignUpView {
     }
 
     private fun isUserLoggedIn(): Boolean {
-        val userId = getSharedPreferences().getInt(getString(R.string.user_id), -1)
-        return userId != -1
+        val userId = getSharedPreferences().getLong(getString(R.string.user_id), -1L)
+        return userId != -1L
     }
 
     override fun logInToApplication(user: UserLoggedInDto) {
@@ -70,5 +70,5 @@ class LogInActivity : MvpAppCompatActivity(), LogInSignUpView {
         return getSharedPreferences(fileKey, Context.MODE_PRIVATE)
     }
 
-    private fun startMainActivity() = startActivity(Intent(this, MainActivity::class.java))
+    private fun startMainActivity() = startActivity(Intent(this, CustomerActivity::class.java))
 }

@@ -6,7 +6,7 @@ import kotlinx.coroutines.launch
 import moxy.InjectViewState
 import moxy.MvpPresenter
 import tech.volkov.nextdoorfarm.backend.dagger.DaggerAuthRepositoryComponent
-import tech.volkov.nextdoorfarm.backend.helper.Validation
+import tech.volkov.nextdoorfarm.frontend.helper.Validation
 import tech.volkov.nextdoorfarm.backend.model.UserSignInDto
 import tech.volkov.nextdoorfarm.backend.model.UserType
 import tech.volkov.nextdoorfarm.backend.repository.mock.AuthRepositoryMock
