@@ -34,8 +34,8 @@ class SignUpActivity : MvpAppCompatActivity(), LogInSignUpView {
             }
 
             val userType = when {
-                logInCustomerRadioButton.isSelected -> UserType.CUSTOMER
-                logInFarmerRadioButton.isSelected -> UserType.FARMER
+                signUpCustomerRadioButton.isSelected -> UserType.CUSTOMER
+                signUpFarmerRadioButton.isSelected -> UserType.FARMER
                 else -> UserType.CUSTOMER
             }
 
@@ -52,7 +52,7 @@ class SignUpActivity : MvpAppCompatActivity(), LogInSignUpView {
 
     override fun logInToApplication(user: UserLoggedInDto) {
         saveUserIdToSharedPreferences(user.id)
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, CustomerActivity::class.java))
     }
 
     private fun saveUserIdToSharedPreferences(userId: Long) {

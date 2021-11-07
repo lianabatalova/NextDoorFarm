@@ -24,4 +24,13 @@
 
     <string name="activity_log_in_sign_up_button_customer">Покупатель</string>
     <string name="activity_log_in_sign_up_button_farmer">Фермер</string>
+
+    <!--Menu-->
+    <string name="menu_products">Продукты</string>
+    <string name="menu_cart">Корзина</string>
+    <string name="menu_profile">Профиль</string>
+
+    <!--Customer Activity-->
+    <string name="fragment_customer_profile_title">Профиль</string>
+    <string name="fragment_customer_profile_edit_title">Редатикарование</string>
 </resources>
