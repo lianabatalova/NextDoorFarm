@@ -173,6 +173,44 @@ All methods below will use header `Authorization: Bearer $jwtToken`.
 }
 ```
 
+---
+
+**Description**: Deletes customer by id.
+
+**Method**: `DELETE`
+
+**Query params**: id: long
+
+**Response**: `CustomerAndOrdersDto`
+
+```json
+{
+  "id": 1,
+  "firstName": "ivan",
+  "lastName": "ivanov",
+  "address": "Moscow, Kremlin",
+  "username": "ivan",
+  "email": "ivan@yandex.ru",
+  "phone": "+79999542153",
+  "orders": [
+    {
+      "id": 123,
+      "products": [
+        {
+          "id": 1,
+          "name": "carrot",
+          "description": "fresh carrot",
+          "pricePerKg": 40,
+          "imageLink": "https://www.jessicagavin.com/wp-content/uploads/2019/02/carrots-benefits-pin.jpg",
+          "amount": 1
+        }
+      ],
+      "status": "fillingIn"
+    }
+  ]
+}
+```
+
 ## Farmers controller
 
 All methods below will use header `Authorization: Bearer $jwtToken`.
