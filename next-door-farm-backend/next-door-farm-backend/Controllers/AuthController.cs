@@ -82,7 +82,7 @@ namespace next_door_farm_backend.Controllers
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, (userInfo.id).ToString()),
+                new Claim("id", (userInfo.id).ToString()),
                 new Claim(JwtRegisteredClaimNames.GivenName, userInfo.username),
                 new Claim(JwtRegisteredClaimNames.Typ, userInfo.userType)
             };
