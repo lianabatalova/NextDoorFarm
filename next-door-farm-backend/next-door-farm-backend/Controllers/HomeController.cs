@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using next_door_farm_backend.Data;
 using next_door_farm_backend.Models;
 
 namespace next_door_farm_backend.Controllers
