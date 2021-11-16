@@ -1,13 +1,12 @@
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace next_door_farm_backend.Models
 {
-    public class Customers
+    public class Farmers
     {
         [Key]
         public Guid RefID { get; set; }
-
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Address { get; set; }
@@ -15,8 +14,10 @@ namespace next_door_farm_backend.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        public string Description { get; set; }
+        public float Rating { get; set; }
 
-        public Customers()
+        public Farmers()
         {
         }
     }
