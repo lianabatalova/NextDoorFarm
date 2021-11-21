@@ -166,7 +166,7 @@ namespace next_door_farm_backend.Controllers
                         FirstName = userSignUpDto.firstName ?? "",
                         SecondName = userSignUpDto.lastName ?? "",
                         Password = userSignUpDto.password,
-                        RefID = new Guid(),
+                        RefID = Guid.NewGuid(),
                         Username = userSignUpDto.username
                     };
                     db.Customers.Add(customer);
@@ -190,7 +190,7 @@ namespace next_door_farm_backend.Controllers
                         FirstName = userSignUpDto.firstName ?? "",
                         SecondName = userSignUpDto.lastName ?? "",
                         Password = userSignUpDto.password,
-                        RefID = new Guid(),
+                        RefID = Guid.NewGuid(),
                         Username = userSignUpDto.username
                     };
                     db.Farmers.Add(farmer);
