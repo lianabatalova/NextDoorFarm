@@ -15,7 +15,7 @@ namespace next_door_farm_backend.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Description { get; set; }
-        public float Rating { get; set; }
+        public double Rating { get; set; }
 
         public Farmers()
         {
