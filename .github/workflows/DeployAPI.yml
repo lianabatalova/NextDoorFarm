@@ -1,5 +1,8 @@
 name: Deploy API
 
+on:
+  workflow_dispatch:
+
 jobs:
   Deploy:
     name: Build Solution to Docker image
