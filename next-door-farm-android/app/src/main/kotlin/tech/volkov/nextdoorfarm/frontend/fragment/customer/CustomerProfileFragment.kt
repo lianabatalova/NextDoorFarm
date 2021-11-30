@@ -1,4 +1,4 @@
-package tech.volkov.nextdoorfarm.frontend.fragment
+package tech.volkov.nextdoorfarm.frontend.fragment.customer
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -17,7 +17,7 @@ import moxy.presenter.InjectPresenter
 import tech.volkov.nextdoorfarm.R
 import tech.volkov.nextdoorfarm.backend.model.CustomerAndOrdersDto
 import tech.volkov.nextdoorfarm.backend.presenter.fragment.CustomerProfilePresenter
-import tech.volkov.nextdoorfarm.frontend.fragment.internal.CustomerProfileEditFragment
+import tech.volkov.nextdoorfarm.frontend.fragment.customer.internal.CustomerProfileEditFragment
 import tech.volkov.nextdoorfarm.frontend.view.ProfileView
 import kotlin.system.exitProcess
 

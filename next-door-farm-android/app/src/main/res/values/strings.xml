@@ -27,7 +27,7 @@
 
     <!--Menu-->
     <string name="menu_products">Продукты</string>
-    <string name="menu_cart">Корзина</string>
+    <string name="menu_orders">Заказы</string>
     <string name="menu_profile">Профиль</string>
 
     <!--Customer Activity-->

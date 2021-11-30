@@ -1,4 +1,4 @@
-package tech.volkov.nextdoorfarm.frontend.fragment.internal
+package tech.volkov.nextdoorfarm.frontend.fragment.customer.internal
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -15,7 +15,7 @@ import moxy.presenter.InjectPresenter
 import tech.volkov.nextdoorfarm.R
 import tech.volkov.nextdoorfarm.backend.model.CustomerAndOrdersDto
 import tech.volkov.nextdoorfarm.backend.presenter.internal.CustomerProfileEditPresenter
-import tech.volkov.nextdoorfarm.frontend.fragment.CustomerProfileFragment
+import tech.volkov.nextdoorfarm.frontend.fragment.customer.CustomerProfileFragment
 import tech.volkov.nextdoorfarm.frontend.view.internal.CustomerProfileEditView
 
 class CustomerProfileEditFragment : MvpAppCompatFragment(), CustomerProfileEditView {
