@@ -18,6 +18,8 @@ namespace next_door_farm_backend.Controllers
         public int pricePerKg { get; set; }
         public string imageLink { get; set; }
         public int amount { get; set; }
+        
+        public Guid farmerID { get; set; }
 
         public ProductDto(Products product)
         {
@@ -27,6 +29,7 @@ namespace next_door_farm_backend.Controllers
             this.pricePerKg = (int) product.PricePerKg; // fast fix
             this.imageLink = product.ImageLink;
             this.amount = product.Amount;
+            this.farmerID = product.FarmerId;
         }
     }
     
@@ -62,7 +65,7 @@ namespace next_door_farm_backend.Controllers
     {
         public Guid id { get; set; }
         public string firstName { get; set; }
-        public string lastName { get; set; }
+        public string secondName { get; set; }
         public string address { get; set; }
         public string username { get; set; }
         public string email { get; set; }
@@ -73,7 +76,7 @@ namespace next_door_farm_backend.Controllers
         {
             this.id = customers.RefID;
             this.firstName = customers.FirstName;
-            this.lastName = customers.SecondName;
+            this.secondName = customers.SecondName;
             this.address = customers.Address;
             this.username = customers.Username;
             this.email = customers.Email;
@@ -153,5 +156,85 @@ namespace next_door_farm_backend.Controllers
 
             return Ok(customerAndOrdersDto);
         }
+
+        List<ProductDto> GetOrderedProductsOfCustomer(Guid customerId, Guid farmerId)
+        {
+            List<ProductDto> res = new List<ProductDto>();
+            var customer = db.Customers.SingleOrDefault(c => c.RefID == customerId);
+            var customerOrders = db.Orders.Where(order => order.CustomerId == customerId).ToList();
+            var customerAndOrdersDto = new CustomerAndOrdersDto(customer, customerOrders, db);
+            foreach (var orderDto in customerAndOrdersDto.orders)
+            {
+                foreach (var product in orderDto.products)
+                {
+                    //Console.WriteLine(product.farmerID + " " + farmerId);
+                    if (product.farmerID == farmerId)
+                    {
+                       // Console.WriteLine(product);
+                        res.Add(product);
+                    }
+                }
+            }
+            
+            return res;
+        }
+
+        public class CustomerWithOrderedProducts
+        {
+            public Customers customer { get; set; }
+            public List<ProductDto> ProductDtos { get; set; }
+
+            public CustomerWithOrderedProducts(Customers customer_, List<ProductDto> productDtos_)
+            {
+                this.customer = customer_;
+                this.ProductDtos = productDtos_.ToList();
+            }
+        }
+        
+        [Route("customers/getAllOrderedProducts")]
+        [HttpGet]
+        [Authorize]
+        public IActionResult GetAllOrderedProductsOfCustomers(string id = null)
+        {
+            Guid farmerIdFromJwt = Guid.Parse(HttpContext.User.Claims.First(i => i.Type == "id").Value);
+            var farmer = db.Farmers.SingleOrDefault(c => c.RefID == farmerIdFromJwt);
+            if (farmer is null)
+            {
+                return Unauthorized("Make sure you've logged in as a farmer");
+            }
+            
+            if (id is null)
+            {
+                var customers = db.Customers.ToList();
+                List<CustomerWithOrderedProducts> ordered_products_of_customers =
+                    new List<CustomerWithOrderedProducts>();
+                foreach (var customer in customers)
+                {
+                    var temp = GetOrderedProductsOfCustomer(customer.RefID, farmerIdFromJwt);
+
+                    if (temp.Count > 0)
+                    {
+                        ordered_products_of_customers.Add(new CustomerWithOrderedProducts(customer,
+                            temp.ToList()));
+                    }
+                }
+
+                foreach (var customer in ordered_products_of_customers)
+                {
+                    if (customer.ProductDtos.Count > 0)
+                    {
+                        Console.WriteLine("hey!");
+                    }
+                }
+                return Ok(ordered_products_of_customers);
+            }
+            else
+            {
+                return Ok(GetOrderedProductsOfCustomer(Guid.Parse(id), farmerIdFromJwt));
+            }
+            
+            //return Ok(db.Customerss.ToList());
+        }
+        
     }
 }
