@@ -26,10 +26,7 @@ namespace next_door_farm_backend.Controllers
         public IActionResult GetFarmers()
         {
             Guid idFromJwt = Guid.Parse(HttpContext.User.Claims.First(i => i.Type == "id").Value);
-            var farmer = db.Farmers.SingleOrDefault(c => c.RefID == idFromJwt);
-            var farmerProducts = db.Products.Where(product => product.FarmerId == idFromJwt).ToList();
-            var farmerAndProductsDto = new FarmerAndProductsDto(farmer, farmerProducts);
-            return Ok(farmerAndProductsDto);
+            return Ok(GetFarmerAndProductsDto(idFromJwt));
         }
 
         [Route("farmers")]
@@ -73,6 +70,37 @@ namespace next_door_farm_backend.Controllers
             return Ok(farmerAndProductsDto);
         }
 
+
+        FarmerAndProductsDto GetFarmerAndProductsDto(Guid farmerId)
+        {
+            var farmer = db.Farmers.SingleOrDefault(c => c.RefID == farmerId);
+            var farmerProducts = db.Products.Where(product => product.FarmerId == farmerId).ToList();
+            var farmerAndProductsDto = new FarmerAndProductsDto(farmer, farmerProducts);
+            return farmerAndProductsDto;
+        }
+
+        [Route("farmers/getAllProducts")] 
+        [HttpGet]
+        public IActionResult GetAllProductsOfFarmer(string id = null)
+        {
+            if (id is null)
+            {
+                var farmers = db.Farmers.ToList();
+                List<FarmerAndProductsDto> farmerAndProductsDtos = new List<FarmerAndProductsDto>();
+                foreach (var farmer in farmers)
+                {
+                    farmerAndProductsDtos.Add(GetFarmerAndProductsDto(farmer.RefID));
+                }
+
+                return Ok(farmerAndProductsDtos);
+            }
+            else
+            {
+                Guid farmerId = Guid.Parse(id);
+                return Ok(GetFarmerAndProductsDto(farmerId));
+            }
+        }
+        
         public class ProductsDto
         {
             public Guid id { get; set; }
@@ -97,7 +125,7 @@ namespace next_door_farm_backend.Controllers
         {
             public Guid id { get; set; }
             public string firstName { get; set; }
-            public string lastName { get; set; }
+            public string secondName { get; set; }
             public string address { get; set; }
             public string username { get; set; }
             public string email { get; set; }
@@ -110,7 +138,7 @@ namespace next_door_farm_backend.Controllers
             {
                 this.id = farmers.RefID;
                 this.firstName = farmers.FirstName;
-                this.lastName = farmers.SecondName;
+                this.secondName = farmers.SecondName;
                 this.address = farmers.Address;
                 this.username = farmers.Username;
                 this.email = farmers.Email;

@@ -34,7 +34,7 @@ namespace next_door_farm_backend.Controllers
     public class UserSignUpDto
     {
         public string firstName { get; set; }
-        public string lastName { get; set; }
+        public string secondName { get; set; }
         public string username { get; set; }
         public string email { get; set; }
         public string password { get; set; }
@@ -164,7 +164,7 @@ namespace next_door_farm_backend.Controllers
                     {
                         Email = userSignUpDto.email ?? "",
                         FirstName = userSignUpDto.firstName ?? "",
-                        SecondName = userSignUpDto.lastName ?? "",
+                        SecondName = userSignUpDto.secondName ?? "",
                         Password = userSignUpDto.password,
                         RefID = Guid.NewGuid(),
                         Username = userSignUpDto.username
@@ -188,7 +188,7 @@ namespace next_door_farm_backend.Controllers
                     {
                         Email = userSignUpDto.email ?? "",
                         FirstName = userSignUpDto.firstName ?? "",
-                        SecondName = userSignUpDto.lastName ?? "",
+                        SecondName = userSignUpDto.secondName ?? "",
                         Password = userSignUpDto.password,
                         RefID = Guid.NewGuid(),
                         Username = userSignUpDto.username
