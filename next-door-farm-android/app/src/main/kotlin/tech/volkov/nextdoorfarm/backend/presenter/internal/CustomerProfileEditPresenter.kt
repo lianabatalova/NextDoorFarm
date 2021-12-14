@@ -8,7 +8,6 @@ import moxy.MvpPresenter
 import tech.volkov.nextdoorfarm.backend.dagger.DaggerCustomerRepositoryComponent
 import tech.volkov.nextdoorfarm.backend.model.CustomerDto
 import tech.volkov.nextdoorfarm.backend.repository.CustomerRepository
-import tech.volkov.nextdoorfarm.frontend.view.ProfileView
 import tech.volkov.nextdoorfarm.frontend.view.internal.CustomerProfileEditView
 import javax.inject.Inject
 
@@ -22,14 +21,15 @@ class CustomerProfileEditPresenter : MvpPresenter<CustomerProfileEditView>() {
         DaggerCustomerRepositoryComponent.create().inject(this)
     }
 
-    fun getCustomer() = uiScope.launch {
-        when (val user = customerRepository.getCustomer()) {
+    fun getCustomer(bearerAuth: String) = uiScope.launch {
+        when (val user = customerRepository.getCustomer(bearerAuth)) {
             null -> viewState.showErrorMessage(USER_GET_ERROR)
             else -> viewState.fillInUserInfo(user)
         }
     }
 
     fun updateCustomer(
+        token: String,
         firstName: String,
         lastName: String,
         address: String,
@@ -45,7 +45,7 @@ class CustomerProfileEditPresenter : MvpPresenter<CustomerProfileEditView>() {
             email = email,
             phone = phone
         )
-        when (val user = customerRepository.updateCustomer(customerDto)) {
+        when (val user = customerRepository.updateCustomer(token, customerDto)) {
             null -> viewState.showErrorMessage(USER_GET_ERROR)
             else -> viewState.fillInUserInfo(user)
         }

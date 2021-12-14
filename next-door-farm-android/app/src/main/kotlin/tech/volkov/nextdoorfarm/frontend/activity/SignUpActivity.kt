@@ -34,9 +34,9 @@ class SignUpActivity : MvpAppCompatActivity(), LogInSignUpView {
             }
 
             val userType = when {
-                signUpCustomerRadioButton.isSelected -> UserType.CUSTOMER
-                signUpFarmerRadioButton.isSelected -> UserType.FARMER
-                else -> UserType.CUSTOMER
+                signUpCustomerRadioButton.isSelected -> UserType.customer
+                signUpFarmerRadioButton.isSelected -> UserType.farmer
+                else -> UserType.customer
             }
 
             signUpPresenter.signUpUser(
@@ -55,13 +55,13 @@ class SignUpActivity : MvpAppCompatActivity(), LogInSignUpView {
         startActivity(Intent(this, CustomerActivity::class.java))
     }
 
-    private fun saveUserIdToSharedPreferences(userId: Long) {
+    private fun saveUserIdToSharedPreferences(userId: String) {
         val sharedPreferences = getSharedPreferences(
             getString(R.string.preference_file_key),
             Context.MODE_PRIVATE
         )
         val editor = sharedPreferences.edit()
-        editor.putLong(getString(R.string.user_id), userId).apply()
+        editor.putString(getString(R.string.user_id), userId).apply()
     }
 
     override fun showErrorMessage(message: String) {

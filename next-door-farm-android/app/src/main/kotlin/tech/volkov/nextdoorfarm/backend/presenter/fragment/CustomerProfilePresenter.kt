@@ -20,8 +20,8 @@ class CustomerProfilePresenter : MvpPresenter<ProfileView>() {
         DaggerCustomerRepositoryComponent.create().inject(this)
     }
 
-    fun getCustomer() = uiScope.launch {
-        when (val user = customerRepository.getCustomer()) {
+    fun getCustomer(bearerAuth: String) = uiScope.launch {
+        when (val user = customerRepository.getCustomer(bearerAuth)) {
             null -> viewState.showErrorMessage(USER_GET_ERROR)
             else -> viewState.fillInUserProfile(user)
         }

@@ -16,7 +16,7 @@ data class UserSignInDto(
 )
 
 data class UserLoggedInDto(
-    val id: Long,
+    val id: String,
     val username: String,
     val userType: UserType,
     val token: String,
@@ -24,5 +24,5 @@ data class UserLoggedInDto(
 )
 
 enum class UserType {
-    CUSTOMER, FARMER
+    customer, farmer
 }

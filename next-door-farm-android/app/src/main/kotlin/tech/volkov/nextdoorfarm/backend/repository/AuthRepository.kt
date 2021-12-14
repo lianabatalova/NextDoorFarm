@@ -7,6 +7,7 @@ import tech.volkov.nextdoorfarm.backend.model.UserLoggedInDto
 import tech.volkov.nextdoorfarm.backend.model.UserSignInDto
 import tech.volkov.nextdoorfarm.backend.retrofit.AuthRepositoryClient
 import tech.volkov.nextdoorfarm.backend.retrofit.RetrofitBuilder
+import java.lang.Exception
 import javax.inject.Inject
 
 @Suppress("BlockingMethodInNonBlockingContext")

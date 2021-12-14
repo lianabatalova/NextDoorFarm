@@ -40,7 +40,8 @@ class CustomerCartFragment : MvpAppCompatFragment(), ProfileView {
             resources.getString(R.string.fragment_customer_profile_title)
         setOnClickListeners(view)
 
-        customerProfilePresenter.getCustomer()
+        val token = getSharedPreferences().getString(getString(R.string.token), "")!!
+        customerProfilePresenter.getCustomer(token)
     }
 
     private fun setOnClickListeners(view: View) {

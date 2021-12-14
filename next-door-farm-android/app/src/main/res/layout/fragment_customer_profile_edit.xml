@@ -6,26 +6,19 @@
         android:background="@color/light_gray">
 
     <RelativeLayout
-            android:id="@+id/profileImageLayout"
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
+        android:id="@+id/profileImageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
 
-        <ImageView
-            android:id="@+id/profileImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/zuck" />
-
-        <EditText
+        <TextView
             android:id="@+id/profileFullNameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Марк Цукерберг"
-            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="30sp" />
 
     </RelativeLayout>
@@ -35,15 +28,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:background="@color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_edittext_login"
             android:layout_below="@+id/profileImageLayout">
 
         <EditText
             android:id="@+id/customerProfileUsernameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="zuck"
+            android:layout_marginStart="5dp"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -53,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerProfileUsernameEdit"
             android:textColor="@color/gray"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="5dp"
             android:textSize="14sp"
             android:text="Имя пользователя"/>
 
@@ -65,16 +60,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/profileHeaderLayout"
         android:layout_marginTop="1dp"
-        android:background="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_middle"
         android:padding="5dp">
 
         <EditText
             android:id="@+id/customerProfileAddressEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="Сан-Франциско, Калифорния, США"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -83,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerProfileAddressEdit"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="5dp"
             android:text="Адрес"
             android:textColor="@color/gray"
             android:textSize="14sp" />
@@ -96,15 +93,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/profileAddressLayout"
         android:layout_marginTop="1dp"
-        android:background="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_middle"
         android:padding="5dp">
 
         <EditText
             android:id="@+id/customerProfileEmailEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="zuck@fb.com"
+            android:layout_marginStart="5dp"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -113,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerProfileEmailEdit"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="5dp"
             android:text="Почта"
             android:textColor="@color/gray"
             android:textSize="14sp" />
@@ -126,15 +125,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/customerProfileLayout"
         android:layout_marginTop="1dp"
-        android:background="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_password"
         android:padding="5dp">
 
         <EditText
             android:id="@+id/customerProfilePhoneEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="+1 855 855-89-65"
+            android:layout_marginStart="5dp"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -143,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerProfilePhoneEdit"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="5dp"
             android:text="Телефон"
             android:textColor="@color/gray"
             android:textSize="14sp" />
