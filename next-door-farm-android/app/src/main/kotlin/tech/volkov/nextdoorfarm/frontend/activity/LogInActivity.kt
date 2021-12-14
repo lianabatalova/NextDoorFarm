@@ -33,9 +33,9 @@ class LogInActivity : MvpAppCompatActivity(), LogInSignUpView {
     private fun init() {
         logInLogInButton.setOnClickListener {
             val userType = when {
-                logInCustomerRadioButton.isSelected -> UserType.CUSTOMER
-                logInFarmerRadioButton.isSelected -> UserType.FARMER
-                else -> UserType.CUSTOMER
+                logInCustomerRadioButton.isSelected -> UserType.customer
+                logInFarmerRadioButton.isSelected -> UserType.farmer
+                else -> UserType.customer
             }
 
             loginPresenter.logInUserBy(
@@ -51,13 +51,15 @@ class LogInActivity : MvpAppCompatActivity(), LogInSignUpView {
     }
 
     private fun isUserLoggedIn(): Boolean {
-        val userId = getSharedPreferences().getLong(getString(R.string.user_id), -1L)
-        return userId != -1L
+        val userId = getSharedPreferences().getString(getString(R.string.user_id), "")
+        return userId != ""
     }
 
     override fun logInToApplication(user: UserLoggedInDto) {
         val editor = getSharedPreferences().edit()
-        editor.putLong(getString(R.string.user_id), user.id).apply()
+        editor.putString(getString(R.string.user_id), user.id).apply()
+        editor.putString(getString(R.string.user_type), user.userType.toString()).apply()
+        editor.putString(getString(R.string.token), user.token).apply()
         startMainActivity()
     }
 

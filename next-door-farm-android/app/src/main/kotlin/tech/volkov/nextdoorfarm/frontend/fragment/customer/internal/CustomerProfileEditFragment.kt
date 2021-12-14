@@ -1,6 +1,8 @@
 package tech.volkov.nextdoorfarm.frontend.fragment.customer.internal
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,16 +41,18 @@ class CustomerProfileEditFragment : MvpAppCompatFragment(), CustomerProfileEditV
         mainActivity = activity as AppCompatActivity
         mainActivity.supportActionBar?.title =
             resources.getString(R.string.fragment_customer_profile_edit_title)
-        setOnClickListener(view)
 
-        customerProfileEditPresenter.getCustomer()
+        val token = getSharedPreferences().getString(getString(R.string.token), "")!!
+        setOnClickListener(token, view)
+        customerProfileEditPresenter.getCustomer(token)
     }
 
-    private fun setOnClickListener(view: View) {
+    private fun setOnClickListener(token: String, view: View) {
         view.customerProfileEditSaveButton.setOnClickListener {
             val fullName = profileFullNameEdit.text.toString().split(" ")
 
             customerProfileEditPresenter.updateCustomer(
+                token = token,
                 firstName = fullName[0],
                 lastName = fullName[1],
                 address = customerProfileAddressEdit.text.toString(),
@@ -85,5 +89,10 @@ class CustomerProfileEditFragment : MvpAppCompatFragment(), CustomerProfileEditV
 
     override fun showErrorMessage(message: String) {
         Toasty.error(mainActivity, message, Toast.LENGTH_SHORT, true).show()
+    }
+
+    private fun getSharedPreferences(): SharedPreferences {
+        val fileKey = getString(R.string.preference_file_key)
+        return mainActivity.getSharedPreferences(fileKey, Context.MODE_PRIVATE)
     }
 }

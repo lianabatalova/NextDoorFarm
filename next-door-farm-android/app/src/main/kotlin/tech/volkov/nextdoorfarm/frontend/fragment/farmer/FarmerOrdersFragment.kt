@@ -40,7 +40,7 @@ class FarmerOrdersFragment : MvpAppCompatFragment(), ProfileView {
             resources.getString(R.string.fragment_customer_profile_title)
         setOnClickListeners(view)
 
-        customerProfilePresenter.getCustomer()
+        //customerProfilePresenter.getCustomer()
     }
 
     private fun setOnClickListeners(view: View) {

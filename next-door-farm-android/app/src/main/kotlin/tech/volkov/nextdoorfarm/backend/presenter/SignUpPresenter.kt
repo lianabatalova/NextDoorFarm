@@ -9,7 +9,7 @@ import tech.volkov.nextdoorfarm.backend.dagger.DaggerAuthRepositoryComponent
 import tech.volkov.nextdoorfarm.frontend.helper.Validation
 import tech.volkov.nextdoorfarm.backend.model.UserSignInDto
 import tech.volkov.nextdoorfarm.backend.model.UserType
-import tech.volkov.nextdoorfarm.backend.repository.mock.AuthRepositoryMock
+import tech.volkov.nextdoorfarm.backend.repository.AuthRepository
 import tech.volkov.nextdoorfarm.frontend.view.LogInSignUpView
 import javax.inject.Inject
 
@@ -17,7 +17,7 @@ import javax.inject.Inject
 class SignUpPresenter: MvpPresenter<LogInSignUpView>() {
 
     @Inject
-    lateinit var authRepository: AuthRepositoryMock
+    lateinit var authRepository: AuthRepository
 
     init {
         DaggerAuthRepositoryComponent.create().inject(this)

@@ -4,6 +4,8 @@
     <!-- Shared preferences-->
     <string name="preference_file_key">APP_SETTINGS</string>
     <string name="user_id">user-id</string>
+    <string name="user_type">user_type</string>
+    <string name="token">token</string>
 
     <!-- Login activity-->
     <string name="activity_log_in_title">Добро пожаловать!</string>

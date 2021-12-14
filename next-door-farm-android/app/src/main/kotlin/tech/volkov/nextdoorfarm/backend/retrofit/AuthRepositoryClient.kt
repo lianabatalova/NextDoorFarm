@@ -9,10 +9,10 @@ import tech.volkov.nextdoorfarm.backend.model.UserSignInDto
 
 interface AuthRepositoryClient {
 
-    @POST("/api/v1/auth/log-in")
+    @POST("/log-in")
     fun logInUser(@Body userLogInDto: UserLogInDto): Call<UserLoggedInDto>
 
-    @POST("/api/v1/auth/sign-up")
+    @POST("/sign-up")
     fun signUpUser(@Body userSignInDto: UserSignInDto): Call<UserLoggedInDto>
 
 }

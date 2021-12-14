@@ -8,24 +8,17 @@
     <RelativeLayout
             android:id="@+id/profileImageLayout"
             android:layout_width="match_parent"
-            android:layout_height="200dp">
-
-        <ImageView
-            android:id="@+id/profileImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/zuck" />
+            android:layout_height="60dp">
 
         <TextView
             android:id="@+id/profileFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
             android:text="Марк Цукерберг"
-            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="30sp" />
 
     </RelativeLayout>

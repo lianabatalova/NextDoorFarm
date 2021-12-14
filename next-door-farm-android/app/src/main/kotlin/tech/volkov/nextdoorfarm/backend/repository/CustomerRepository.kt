@@ -12,19 +12,20 @@ class CustomerRepository @Inject constructor() {
 
     private val client = RetrofitBuilder.retrofit.create(CustomerRepositoryClient::class.java)
 
-    suspend fun getCustomer(): CustomerAndOrdersDto? = withContext(Dispatchers.IO) {
+    suspend fun getCustomer(token: String): CustomerAndOrdersDto? = withContext(Dispatchers.IO) {
         return@withContext try {
-            client.getCustomer().execute().body()
+            client.getCustomer("Bearer $token").execute().body()
         } catch (ex: Exception) {
             null
         }
     }
 
     suspend fun updateCustomer(
+        token: String,
         customerDto: CustomerDto
     ): CustomerAndOrdersDto? = withContext(Dispatchers.IO) {
         return@withContext try {
-            client.updateCustomer(customerDto).execute().body()
+            client.updateCustomer("Bearer $token", customerDto).execute().body()
         } catch (ex: Exception) {
             null
         }
