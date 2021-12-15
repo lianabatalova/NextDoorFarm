@@ -4,7 +4,22 @@ on:
   workflow_dispatch:
 
 jobs:
+  AutoTesting:
+    name: Test software on Androud
+    runs-on: ubuntu-latest
+    
+    env:
+      IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
+    steps:
+      - name: Login
+          uses: google-github-actions/setup-gcloud@master
+          with:
+            project_id: ${{ secrets.GCP_PROJECT_ID }}
+            service_account_email: ${{ secrets.GCP_EMAIL }}
+            service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+    
   Deploy:
+    needs: AutoTesting
     name: Build Solution to Docker image
     runs-on: ubuntu-latest
     env:
