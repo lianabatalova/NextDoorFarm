@@ -56,6 +56,13 @@ namespace next_door_farm_backend.Controllers
             
             foreach (var product in orderProducts)
             {
+                foreach (var prodInOrder in productIdsObjects)
+                {
+                    if (prodInOrder.ProductId == product.RefID)
+                    {
+                        product.Amount = prodInOrder.Amount;
+                    }
+                }
                 this.products.Add(new ProductDto(product));
             }
         }

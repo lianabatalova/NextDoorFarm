@@ -48,17 +48,23 @@ namespace next_door_farm_backend.Controllers
             productInOrder.OrderId = currentOrder.RefID;
             productInOrder.ProductId = orderProductDto.productId;
             
-            if (currentProductInOrder != null)
+            var productType = db.Products.FirstOrDefault(products => orderProductDto.productId == products.RefID);
+            if (productType != null && productType.Amount >= (productType.Amount - orderProductDto.amount))
             {
-                productInOrder.Amount = currentProductInOrder.Amount + orderProductDto.amount;
-                productInOrder.RefID = currentProductInOrder.RefID;
-                db.ProductInOrder.Update(productInOrder);
-            }
-            else
-            {
-                productInOrder.Amount += orderProductDto.amount;
-                productInOrder.RefID = Guid.NewGuid();
-                db.ProductInOrder.Add(productInOrder);
+                if (currentProductInOrder != null)
+                {
+                    productInOrder.Amount = currentProductInOrder.Amount + orderProductDto.amount;
+                    productInOrder.RefID = currentProductInOrder.RefID;
+                    db.ProductInOrder.Update(productInOrder);
+                }
+                else
+                {
+                    productInOrder.Amount += orderProductDto.amount;
+                    productInOrder.RefID = Guid.NewGuid();
+                    db.ProductInOrder.Add(productInOrder);
+                }
+                productType.Amount -= orderProductDto.amount;
+                db.SaveChanges();
             }
             db.SaveChanges();
             
