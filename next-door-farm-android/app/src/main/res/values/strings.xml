@@ -8,31 +8,31 @@
     <string name="token">token</string>
 
     <!-- Login activity-->
-    <string name="activity_log_in_title">Добро пожаловать!</string>
-    <string name="activity_log_in_hint_username">Введите email / username</string>
-    <string name="activity_log_in_hint_password">Введите пароль</string>
-    <string name="activity_log_in_button_login">Войти</string>
-    <string name="activity_log_in_hint_do_not_have_account">Еще нет аккаунта?</string>
-    <string name="activity_log_in_button_sign_up">Создать аккаунт</string>
+    <string name="activity_log_in_title">Digging the tunnels between customers and farmers</string>
+    <string name="activity_log_in_hint_username">Enter email / username</string>
+    <string name="activity_log_in_hint_password">Enter password</string>
+    <string name="activity_log_in_button_login">Log in</string>
+    <string name="activity_log_in_hint_do_not_have_account">First time here?</string>
+    <string name="activity_log_in_button_sign_up">Create new account</string>
 
     <!-- Sign up activity-->
-    <string name="activity_sign_up_title">Регистрация</string>
-    <string name="activity_sign_uo_hint_first_name">Введите имя</string>
-    <string name="activity_sign_uo_hint_last_name">Введите фамилию</string>
-    <string name="activity_sign_uo_hint_username">Введите username</string>
-    <string name="activity_sign_uo_hint_email">Введите email</string>
-    <string name="activity_sign_up_hint_password">Введите пароль</string>
-    <string name="activity_sign_up_hint_password_confirm">Введите пароль еше раз</string>
+    <string name="activity_sign_up_title">Sign up</string>
+    <string name="activity_sign_uo_hint_first_name">Enter first name</string>
+    <string name="activity_sign_uo_hint_last_name">Enter last name</string>
+    <string name="activity_sign_uo_hint_username">Enter username</string>
+    <string name="activity_sign_uo_hint_email">Enter email</string>
+    <string name="activity_sign_up_hint_password">Enter password</string>
+    <string name="activity_sign_up_hint_password_confirm">Enter password one more time</string>
 
-    <string name="activity_log_in_sign_up_button_customer">Покупатель</string>
-    <string name="activity_log_in_sign_up_button_farmer">Фермер</string>
+    <string name="activity_log_in_sign_up_button_customer">Customer</string>
+    <string name="activity_log_in_sign_up_button_farmer">Farmer</string>
 
     <!--Menu-->
-    <string name="menu_products">Продукты</string>
-    <string name="menu_orders">Заказы</string>
-    <string name="menu_profile">Профиль</string>
+    <string name="menu_products">Products</string>
+    <string name="menu_orders">Orders</string>
+    <string name="menu_profile">Profile</string>
 
     <!--Customer Activity-->
-    <string name="fragment_customer_profile_title">Профиль</string>
-    <string name="fragment_customer_profile_edit_title">Редатикарование</string>
+    <string name="fragment_customer_profile_title">Profile</string>
+    <string name="fragment_customer_profile_edit_title">Edit</string>
 </resources>
