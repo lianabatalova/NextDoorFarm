@@ -18,9 +18,24 @@ jobs:
           service_account_email: ${{ secrets.GCP_EMAIL }}
           service_account_key: ${{ secrets.GCP_CREDENTIALS }}
     
-  Deploy:
+  Build:
     needs: AutoTesting
-    name: Build Solution to Docker image
+    name: Build solution to APK
+    runs-on: ubuntu-latest
+    
+    env:
+      IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
+    steps:
+      - name: Login
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_email: ${{ secrets.GCP_EMAIL }}
+          service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+    
+  Deploy:
+    needs: Build
+    name: Deploy to Google Play
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
