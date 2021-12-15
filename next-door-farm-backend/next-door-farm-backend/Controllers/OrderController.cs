@@ -21,9 +21,9 @@ namespace next_door_farm_backend.Controllers
         }
 
         [Route("orders")]
-        [HttpPut]
+        [HttpPost]
         [Authorize]
-        public IActionResult addProductToOrder([FromBody]Guid productId)
+        public IActionResult addProductToOrder([FromBody]OrderProductDto orderProductDto)
         {
             Guid idFromJwt = Guid.Parse(HttpContext.User.Claims.First(i => i.Type == "id").Value);
             var customer = db.Customers.SingleOrDefault(c => c.RefID == idFromJwt);
@@ -39,18 +39,35 @@ namespace next_door_farm_backend.Controllers
                 currentOrder = order;
                 db.Orders.Add(order);
             }
-
+            var currentProductInOrder = db.ProductInOrder
+                .AsNoTracking()
+                .Where(productInOrder => orderProductDto.productId == productInOrder.ProductId)
+                .SingleOrDefault(productInOrder => currentOrder.RefID == productInOrder.OrderId);
+            
             ProductInOrder productInOrder = new ProductInOrder();
             productInOrder.OrderId = currentOrder.RefID;
-            productInOrder.ProductId = productId;
-            db.ProductInOrder.Add(productInOrder);
+            productInOrder.ProductId = orderProductDto.productId;
+            
+            if (currentProductInOrder != null)
+            {
+                productInOrder.Amount = currentProductInOrder.Amount + orderProductDto.amount;
+                productInOrder.RefID = currentProductInOrder.RefID;
+                db.ProductInOrder.Update(productInOrder);
+            }
+            else
+            {
+                productInOrder.Amount += orderProductDto.amount;
+                productInOrder.RefID = Guid.NewGuid();
+                db.ProductInOrder.Add(productInOrder);
+            }
             db.SaveChanges();
+            
             OrderDto orderDto = new OrderDto(currentOrder, db);
             return Ok(orderDto);
         }
 
         [Route("orders")]
-        [HttpPut]
+        [HttpDelete]
         [Authorize]
         public IActionResult DeleteProductFromOrder([FromBody]OrderProductDto orderProductDto)
         {
@@ -61,11 +78,26 @@ namespace next_door_farm_backend.Controllers
                 .SingleOrDefault(order => order.Status == "fillingIn");
             if (currentOrder != null)
             {
-                ProductInOrder productInOrder = new ProductInOrder();
-                productInOrder.OrderId = currentOrder.RefID;
-                productInOrder.ProductId = orderProductDto.productId;
-                db.ProductInOrder.Remove(productInOrder);
-                db.SaveChanges();
+                var currentProductInOrder = db.ProductInOrder
+                    .AsNoTracking()
+                    .Where(productInOrder => orderProductDto.productId == productInOrder.ProductId)
+                    .SingleOrDefault(productInOrder => currentOrder.RefID == productInOrder.OrderId);
+                if (currentProductInOrder != null)
+                {
+                    ProductInOrder productInOrder = new ProductInOrder();
+                    productInOrder.OrderId = currentOrder.RefID;
+                    productInOrder.ProductId = orderProductDto.productId;
+                    productInOrder.Amount = currentProductInOrder.Amount - orderProductDto.amount;
+                    productInOrder.RefID = currentProductInOrder.RefID;
+                    db.ProductInOrder.Remove(productInOrder);
+                    db.SaveChanges();
+                    if (productInOrder.Amount > 0)
+                    {
+                        productInOrder.RefID = Guid.NewGuid();
+                        db.ProductInOrder.Add(productInOrder);
+                        db.SaveChanges();
+                    }
+                }
             }
             
             OrderDto orderDto = new OrderDto(currentOrder, db);
@@ -73,7 +105,7 @@ namespace next_door_farm_backend.Controllers
         }
 
         [Route("orders/submit")]
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         public IActionResult SubmitOrder()
         {
@@ -91,14 +123,14 @@ namespace next_door_farm_backend.Controllers
         }
         
         [Route("orders/cancel")]
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         public IActionResult CancelOrder()
         {
             Guid idFromJwt = Guid.Parse(HttpContext.User.Claims.First(i => i.Type == "id").Value);
             var customer = db.Customers.SingleOrDefault(c => c.RefID == idFromJwt);
             var currentOrder = db.Orders.Where(order => order.CustomerId == customer.RefID)
-                .SingleOrDefault(order => order.Status == "fillingIn");
+                .SingleOrDefault(order => order.Status == "fillingIn" || order.Status == "submitted");
             if (currentOrder != null)
             {
                 currentOrder.Status = "canceled";
