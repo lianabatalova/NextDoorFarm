@@ -5,7 +5,7 @@ on:
 
 jobs:
   AutoTesting:
-    name: Test software on Androud
+    name: Test software on API
     runs-on: ubuntu-latest
     
     env:
