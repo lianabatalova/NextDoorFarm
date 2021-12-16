@@ -9,6 +9,6 @@ data class FarmerDto(
     val email: String,
     val phone: String?,
     val description: String,
-    val rating: Long,
+    val rating: Float,
     val products: List<Product>
 )
