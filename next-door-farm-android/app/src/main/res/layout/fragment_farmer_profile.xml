@@ -1,49 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/light_gray">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray">
 
     <RelativeLayout
-            android:id="@+id/profileImageLayout"
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
-
-        <ImageView
-            android:id="@+id/profileImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/zuck" />
+        android:id="@+id/profileImageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
 
         <TextView
-            android:id="@+id/profileFullName"
+            android:id="@+id/farmerProfileFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Марк Цукерберг"
-            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="30sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-            android:id="@+id/profileHeaderLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:background="@color/white"
-            android:layout_below="@+id/profileImageLayout">
+        android:id="@+id/profileHeaderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileImageLayout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_login"
+        android:padding="5dp">
 
         <TextView
-            android:id="@+id/customerProfileUsername"
+            android:id="@+id/farmerProfileUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="zuck"
+            android:layout_marginStart="5dp"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -51,11 +46,11 @@
             android:id="@+id/profileLoginText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/customerProfileUsername"
+            android:layout_below="@+id/farmerProfileUsername"
+            android:layout_marginStart="5dp"
+            android:text="Username"
             android:textColor="@color/gray"
-            android:layout_marginStart="20dp"
-            android:textSize="14sp"
-            android:text="Имя пользователя"/>
+            android:textSize="14sp" />
 
     </RelativeLayout>
 
@@ -65,16 +60,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/profileHeaderLayout"
         android:layout_marginTop="1dp"
-        android:background="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_middle"
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/customerProfileAddress"
+            android:id="@+id/farmerProfileAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="Сан-Франциско, Калифорния, США"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -82,99 +79,169 @@
             android:id="@+id/profileAddressText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/customerProfileAddress"
-            android:layout_marginStart="20dp"
-            android:text="Адрес"
+            android:layout_below="@+id/farmerProfileAddress"
+            android:layout_marginStart="5dp"
+            android:text="Address"
             android:textColor="@color/gray"
             android:textSize="14sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/customerProfileLayout"
+        android:id="@+id/farmerProfileLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profileAddressLayout"
         android:layout_marginTop="1dp"
-        android:background="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_middle"
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/customerProfileEmail"
+            android:id="@+id/farmerProfileEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="zuck@fb.com"
+            android:layout_marginStart="5dp"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/customerProfileEmailText"
+            android:id="@+id/farmerProfileEmailText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/customerProfileEmail"
-            android:layout_marginStart="20dp"
-            android:text="Почта"
+            android:layout_below="@+id/farmerProfileEmail"
+            android:layout_marginStart="5dp"
+            android:text="Email"
             android:textColor="@color/gray"
             android:textSize="14sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/customerProfilePhoneLayout"
+        android:id="@+id/farmerProfilePhoneLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/customerProfileLayout"
+        android:layout_below="@+id/farmerProfileLayout"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="1dp"
-        android:background="@color/white"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_middle"
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/customerProfilePhone"
+            android:id="@+id/farmerProfilePhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="+1 855 855-89-65"
+            android:layout_marginStart="5dp"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/customerProfilePhoneText"
+            android:id="@+id/farmerProfilePhoneText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/customerProfilePhone"
-            android:layout_marginStart="20dp"
-            android:text="Телефон"
+            android:layout_below="@+id/farmerProfilePhone"
+            android:layout_marginStart="5dp"
+            android:text="Phone"
             android:textColor="@color/gray"
             android:textSize="14sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/customerProfileUserLayout"
+        android:id="@+id/farmerProfileDescriptionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/customerProfilePhoneLayout"
+        android:layout_below="@+id/farmerProfileLayout"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="1dp"
-        android:background="@color/white"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_middle"
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/customerProfileUserType"
+            android:id="@+id/farmerProfileDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Фермер"
+            android:layout_marginStart="5dp"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/customerProfileUserTypeText"
+            android:id="@+id/farmerProfileDescriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/customerProfileUserType"
-            android:layout_marginStart="20dp"
-            android:text="Пользователь"
+            android:layout_below="@+id/farmerProfileDescription"
+            android:layout_marginStart="5dp"
+            android:text="Description"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/farmerProfileRatingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/farmerProfileDescriptionLayout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_middle"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/farmerProfileRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/farmerProfileRatingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/farmerProfileRating"
+            android:layout_marginStart="5dp"
+            android:text="Rating"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/farmerProfileUserLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/farmerProfileRatingLayout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext_password"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/farmerProfileUserType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/farmerProfileUserTypeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/farmerProfileUserType"
+            android:layout_marginStart="5dp"
+            android:text="User type"
             android:textColor="@color/gray"
             android:textSize="14sp" />
 
@@ -182,7 +249,7 @@
 
 
     <Button
-        android:id="@+id/customerProfileEditButton"
+        android:id="@+id/farmerProfileEditButton"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -192,13 +259,13 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/rounded_button"
-        android:text="Редактировать"
+        android:text="Edit"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15dp" />
 
     <Button
-        android:id="@+id/customerProfileLogOutButton"
+        android:id="@+id/farmerProfileLogOutButton"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -208,7 +275,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_button"
-        android:text="Выйти"
+        android:text="Log out"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15dp" />

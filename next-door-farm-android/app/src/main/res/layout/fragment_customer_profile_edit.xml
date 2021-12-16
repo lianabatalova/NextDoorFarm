@@ -50,7 +50,7 @@
             android:textColor="@color/gray"
             android:layout_marginStart="5dp"
             android:textSize="14sp"
-            android:text="Имя пользователя"/>
+            android:text="Username"/>
 
     </RelativeLayout>
 
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerProfileAddressEdit"
             android:layout_marginStart="5dp"
-            android:text="Адрес"
+            android:text="Address"
             android:textColor="@color/gray"
             android:textSize="14sp" />
 
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerProfileEmailEdit"
             android:layout_marginStart="5dp"
-            android:text="Почта"
+            android:text="Email"
             android:textColor="@color/gray"
             android:textSize="14sp" />
 
@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerProfilePhoneEdit"
             android:layout_marginStart="5dp"
-            android:text="Телефон"
+            android:text="Phone"
             android:textColor="@color/gray"
             android:textSize="14sp" />
 
@@ -163,7 +163,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/rounded_button"
-        android:text="Сохранить"
+        android:text="Save"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15dp" />
@@ -179,7 +179,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_button"
-        android:text="Отмена"
+        android:text="Cancel"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15dp" />

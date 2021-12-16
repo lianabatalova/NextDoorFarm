@@ -33,6 +33,13 @@
     <string name="menu_profile">Profile</string>
 
     <!--Customer Activity-->
+    <!--Profile page-->
     <string name="fragment_customer_profile_title">Profile</string>
     <string name="fragment_customer_profile_edit_title">Edit</string>
+
+    <!--Products page-->
+    <string name="fragment_customer_products_title">Products</string>
+
+    <!--Orders page-->
+    <string name="fragment_customer_orders_title">Orders</string>
 </resources>

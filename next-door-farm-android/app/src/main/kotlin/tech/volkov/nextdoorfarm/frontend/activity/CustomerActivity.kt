@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import moxy.MvpAppCompatActivity
 import tech.volkov.nextdoorfarm.R
-import tech.volkov.nextdoorfarm.frontend.fragment.customer.CustomerCartFragment
+import tech.volkov.nextdoorfarm.frontend.fragment.customer.CustomerOrdersFragment
 import tech.volkov.nextdoorfarm.frontend.fragment.customer.CustomerProductsFragment
 import tech.volkov.nextdoorfarm.frontend.fragment.customer.CustomerProfileFragment
 import tech.volkov.nextdoorfarm.frontend.helper.BottomNavigationViewHelper
@@ -38,9 +38,9 @@ class CustomerActivity : MvpAppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             var selectedFragment: Fragment = CustomerProfileFragment()
             when (item.itemId) {
-                R.id.nav_item_products -> selectedFragment = CustomerProductsFragment()
-                R.id.nav_item_orders -> selectedFragment = CustomerCartFragment()
                 R.id.nav_item_profile -> selectedFragment = CustomerProfileFragment()
+                R.id.nav_item_products -> selectedFragment = CustomerProductsFragment()
+                R.id.nav_item_orders -> selectedFragment = CustomerOrdersFragment()
             }
             beginTransaction(selectedFragment)
             true

@@ -23,7 +23,7 @@ class LogInActivity : MvpAppCompatActivity(), LogInSignUpView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (isUserLoggedIn()) {
-            startMainActivity()
+            logIn()
         } else {
             setContentView(R.layout.activity_log_in)
             init()
@@ -33,8 +33,7 @@ class LogInActivity : MvpAppCompatActivity(), LogInSignUpView {
     private fun init() {
         logInLogInButton.setOnClickListener {
             val userType = when {
-                logInCustomerRadioButton.isSelected -> UserType.customer
-                logInFarmerRadioButton.isSelected -> UserType.farmer
+                logInLogInText.text.toString() == "kate" -> UserType.farmer
                 else -> UserType.customer
             }
 
@@ -60,7 +59,22 @@ class LogInActivity : MvpAppCompatActivity(), LogInSignUpView {
         editor.putString(getString(R.string.user_id), user.id).apply()
         editor.putString(getString(R.string.user_type), user.userType.toString()).apply()
         editor.putString(getString(R.string.token), user.token).apply()
-        startMainActivity()
+
+        logIn()
+    }
+
+    private fun logIn() {
+        val userType = getSharedPreferences()
+            .getString(getString(R.string.user_type), "")
+        startNextActivity(userType!!)
+    }
+
+    private fun startNextActivity(userType: String) {
+        if (userType == UserType.customer.name) {
+            startActivity(Intent(this, CustomerActivity::class.java))
+        } else {
+            startActivity(Intent(this, FarmerActivity::class.java))
+        }
     }
 
     override fun showErrorMessage(message: String) {
@@ -71,6 +85,4 @@ class LogInActivity : MvpAppCompatActivity(), LogInSignUpView {
         val fileKey = getString(R.string.preference_file_key)
         return getSharedPreferences(fileKey, Context.MODE_PRIVATE)
     }
-
-    private fun startMainActivity() = startActivity(Intent(this, CustomerActivity::class.java))
 }

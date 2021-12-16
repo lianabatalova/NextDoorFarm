@@ -8,7 +8,7 @@ data class UserLogInDto(
 
 data class UserSignInDto(
     val firstName: String,
-    val lastName: String,
+    val secondName: String,
     val userName: String,
     val email: String,
     val password: String,

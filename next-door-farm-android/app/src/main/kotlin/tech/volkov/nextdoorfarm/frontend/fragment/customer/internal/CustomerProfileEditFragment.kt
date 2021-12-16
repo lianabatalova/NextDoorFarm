@@ -69,7 +69,7 @@ class CustomerProfileEditFragment : MvpAppCompatFragment(), CustomerProfileEditV
 
     @SuppressLint("SetTextI18n")
     override fun fillInUserInfo(user: CustomerAndOrdersDto) {
-        profileFullNameEdit.setText("${user.firstName} ${user.lastName}")
+        profileFullNameEdit.setText("${user.firstName} ${user.secondName}")
         customerProfileUsernameEdit.setText(user.username)
         customerProfileAddressEdit.setText(user.address)
         customerProfileEmailEdit.setText(user.email)

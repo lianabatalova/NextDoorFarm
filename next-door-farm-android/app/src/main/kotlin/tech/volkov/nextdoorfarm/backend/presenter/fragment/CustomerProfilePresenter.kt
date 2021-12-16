@@ -7,11 +7,11 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 import tech.volkov.nextdoorfarm.backend.dagger.DaggerCustomerRepositoryComponent
 import tech.volkov.nextdoorfarm.backend.repository.CustomerRepository
-import tech.volkov.nextdoorfarm.frontend.view.ProfileView
+import tech.volkov.nextdoorfarm.frontend.view.CustomerProfileView
 import javax.inject.Inject
 
 @InjectViewState
-class CustomerProfilePresenter : MvpPresenter<ProfileView>() {
+class CustomerProfilePresenter : MvpPresenter<CustomerProfileView>() {
 
     @Inject
     lateinit var customerRepository: CustomerRepository
@@ -29,6 +29,6 @@ class CustomerProfilePresenter : MvpPresenter<ProfileView>() {
 
     companion object {
         private val uiScope = CoroutineScope(Dispatchers.Main)
-        private const val USER_GET_ERROR = "Не удалось загрузить пользователя"
+        private const val USER_GET_ERROR = "Failed to load customer"
     }
 }

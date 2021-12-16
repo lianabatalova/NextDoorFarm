@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".frontend.activity.CustomerActivity">
         </activity>
+        <activity android:name=".frontend.activity.FarmerActivity">
+        </activity>
         <activity
             android:name=".frontend.activity.SplashActivity"
             android:theme="@style/SplashTheme"
