@@ -10,23 +10,23 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.fragment_customer_profile.*
-import kotlinx.android.synthetic.main.fragment_customer_profile.view.*
+import kotlinx.android.synthetic.main.fragment_farmer_profile.*
+import kotlinx.android.synthetic.main.fragment_farmer_profile.view.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import tech.volkov.nextdoorfarm.R
-import tech.volkov.nextdoorfarm.backend.model.CustomerAndOrdersDto
-import tech.volkov.nextdoorfarm.backend.presenter.fragment.CustomerProfilePresenter
+import tech.volkov.nextdoorfarm.backend.model.FarmerDto
+import tech.volkov.nextdoorfarm.backend.presenter.fragment.FarmerProfilePresenter
 import tech.volkov.nextdoorfarm.frontend.fragment.customer.internal.CustomerProfileEditFragment
-import tech.volkov.nextdoorfarm.frontend.view.ProfileView
+import tech.volkov.nextdoorfarm.frontend.view.FarmerProfileView
 import kotlin.system.exitProcess
 
-class FarmerProfileFragment : MvpAppCompatFragment(), ProfileView {
+class FarmerProfileFragment : MvpAppCompatFragment(), FarmerProfileView {
 
     private lateinit var mainActivity: AppCompatActivity
 
     @InjectPresenter
-    lateinit var customerProfilePresenter: CustomerProfilePresenter
+    lateinit var farmerProfilePresenter: FarmerProfilePresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_farmer_profile, container, false)
@@ -40,16 +40,17 @@ class FarmerProfileFragment : MvpAppCompatFragment(), ProfileView {
             resources.getString(R.string.fragment_customer_profile_title)
         setOnClickListeners(view)
 
-        //customerProfilePresenter.getCustomer()
+        val token = getSharedPreferences().getString(getString(R.string.token), "")!!
+        farmerProfilePresenter.getFarmer(token)
     }
 
     private fun setOnClickListeners(view: View) {
-        view.customerProfileLogOutButton.setOnClickListener {
+        view.farmerProfileLogOutButton.setOnClickListener {
             logOutFromSharedPref()
             exitProcess(0)
         }
 
-        view.customerProfileEditButton.setOnClickListener {
+        view.farmerProfileEditButton.setOnClickListener {
             fragmentManager
                 ?.beginTransaction()
                 ?.replace(R.id.mainContainer, CustomerProfileEditFragment())
@@ -68,13 +69,15 @@ class FarmerProfileFragment : MvpAppCompatFragment(), ProfileView {
     }
 
     @SuppressLint("SetTextI18n")
-    override fun fillInUserProfile(user: CustomerAndOrdersDto) {
-        profileFullName.text = "${user.firstName} ${user.lastName}"
-        customerProfileUsername.text = user.username
-        customerProfileAddress.text = user.address
-        customerProfileEmail.text = user.email
-        customerProfilePhone.text = user.phone
-        customerProfileUserType.text = "Покупатель"
+    override fun fillInUserProfile(user: FarmerDto) {
+        farmerProfileFullName.text = "${user.firstName} ${user.secondName}"
+        farmerProfileUsername.text = user.username
+        farmerProfileAddress.text = user.address
+        farmerProfileEmail.text = user.email
+        farmerProfilePhone.text = user.phone
+        farmerProfileDescription.text = user.description
+        farmerProfileRating.text = user.rating.toString()
+        farmerProfileUserType.text = "Farmer"
     }
 
     override fun showErrorMessage(message: String) {

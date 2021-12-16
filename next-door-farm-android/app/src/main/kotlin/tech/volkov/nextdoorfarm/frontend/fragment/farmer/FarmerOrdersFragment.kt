@@ -18,10 +18,10 @@ import tech.volkov.nextdoorfarm.R
 import tech.volkov.nextdoorfarm.backend.model.CustomerAndOrdersDto
 import tech.volkov.nextdoorfarm.backend.presenter.fragment.CustomerProfilePresenter
 import tech.volkov.nextdoorfarm.frontend.fragment.customer.internal.CustomerProfileEditFragment
-import tech.volkov.nextdoorfarm.frontend.view.ProfileView
+import tech.volkov.nextdoorfarm.frontend.view.CustomerProfileView
 import kotlin.system.exitProcess
 
-class FarmerOrdersFragment : MvpAppCompatFragment(), ProfileView {
+class FarmerOrdersFragment : MvpAppCompatFragment(), CustomerProfileView {
 
     private lateinit var mainActivity: AppCompatActivity
 
@@ -69,12 +69,12 @@ class FarmerOrdersFragment : MvpAppCompatFragment(), ProfileView {
 
     @SuppressLint("SetTextI18n")
     override fun fillInUserProfile(user: CustomerAndOrdersDto) {
-        profileFullName.text = "${user.firstName} ${user.lastName}"
+        profileFullName.text = "${user.firstName} ${user.secondName}"
         customerProfileUsername.text = user.username
         customerProfileAddress.text = user.address
         customerProfileEmail.text = user.email
         customerProfilePhone.text = user.phone
-        customerProfileUserType.text = "Покупатель"
+        customerProfileUserType.text = "Customer"
     }
 
     override fun showErrorMessage(message: String) {

@@ -1,32 +1,29 @@
 package tech.volkov.nextdoorfarm.frontend.fragment.customer
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.fragment_customer_profile.*
-import kotlinx.android.synthetic.main.fragment_customer_profile.view.*
+import kotlinx.android.synthetic.main.fragment_customer_products.view.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import tech.volkov.nextdoorfarm.R
-import tech.volkov.nextdoorfarm.backend.model.CustomerAndOrdersDto
-import tech.volkov.nextdoorfarm.backend.presenter.fragment.CustomerProfilePresenter
-import tech.volkov.nextdoorfarm.frontend.fragment.customer.internal.CustomerProfileEditFragment
-import tech.volkov.nextdoorfarm.frontend.view.ProfileView
-import kotlin.system.exitProcess
+import tech.volkov.nextdoorfarm.backend.model.FarmerDto
+import tech.volkov.nextdoorfarm.backend.presenter.fragment.CustomerProductPresenter
+import tech.volkov.nextdoorfarm.frontend.fragment.adapter.ProductItemAdapter
+import tech.volkov.nextdoorfarm.frontend.view.CustomerProductsView
 
-class CustomerProductsFragment : MvpAppCompatFragment(), ProfileView {
+class CustomerProductsFragment : MvpAppCompatFragment(), CustomerProductsView {
 
     private lateinit var mainActivity: AppCompatActivity
+    private lateinit var currentView: View
 
     @InjectPresenter
-    lateinit var customerProfilePresenter: CustomerProfilePresenter
+    lateinit var customerProductPresenter: CustomerProductPresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_customer_products, container, false)
@@ -37,48 +34,39 @@ class CustomerProductsFragment : MvpAppCompatFragment(), ProfileView {
     private fun init(view: View) {
         mainActivity = activity as AppCompatActivity
         mainActivity.supportActionBar?.title =
-            resources.getString(R.string.fragment_customer_profile_title)
+            resources.getString(R.string.fragment_customer_products_title)
+        currentView = view
         setOnClickListeners(view)
-
-        val token = getSharedPreferences().getString(getString(R.string.token), "")!!
-        customerProfilePresenter.getCustomer(token)
+        customerProductPresenter.fillInProducts()
     }
 
     private fun setOnClickListeners(view: View) {
-        view.customerProfileLogOutButton.setOnClickListener {
-            logOutFromSharedPref()
-            exitProcess(0)
-        }
-
-        view.customerProfileEditButton.setOnClickListener {
-            fragmentManager
-                ?.beginTransaction()
-                ?.replace(R.id.mainContainer, CustomerProfileEditFragment())
-                ?.commit()
-        }
+//        view.appointmentsAddAppointmentButton.setOnClickListener {
+//            fragmentManager
+//                ?.beginTransaction()
+//                ?.replace(R.id.mainContainer, AddAppointmentFragment())
+//                ?.commit()
+//        }
     }
 
-    @SuppressLint("ApplySharedPref")
-    private fun logOutFromSharedPref() {
-        getSharedPreferences().edit().clear().commit()
-    }
+    override fun fillInProducts(farmers: List<FarmerDto>?) {
+        val layoutManager = LinearLayoutManager(activity)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        currentView.productsRecyclerView.layoutManager = layoutManager
+        val products = farmers!!.map { it.products }.flatten()
 
-    private fun getSharedPreferences(): SharedPreferences {
-        val fileKey = getString(R.string.preference_file_key)
-        return mainActivity.getSharedPreferences(fileKey, Context.MODE_PRIVATE)
-    }
-
-    @SuppressLint("SetTextI18n")
-    override fun fillInUserProfile(user: CustomerAndOrdersDto) {
-        profileFullName.text = "${user.firstName} ${user.lastName}"
-        customerProfileUsername.text = user.username
-        customerProfileAddress.text = user.address
-        customerProfileEmail.text = user.email
-        customerProfilePhone.text = user.phone
-        customerProfileUserType.text = "Покупатель"
+        val adapter = ProductItemAdapter(requireActivity(), products)
+        currentView.productsRecyclerView.adapter = adapter
     }
 
     override fun showErrorMessage(message: String) {
         Toasty.error(mainActivity, message, Toast.LENGTH_SHORT, true).show()
     }
+
+//    override fun openAddAppointmentPage() {
+//        fragmentManager
+//            ?.beginTransaction()
+//            ?.replace(R.id.mainContainer, AppointmentDetailsFragment())
+//            ?.commit()
+//    }
 }

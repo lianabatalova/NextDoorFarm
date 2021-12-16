@@ -3,14 +3,14 @@ package tech.volkov.nextdoorfarm.backend.repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import tech.volkov.nextdoorfarm.backend.model.*
-import tech.volkov.nextdoorfarm.backend.retrofit.CustomerRepositoryClient
+import tech.volkov.nextdoorfarm.backend.retrofit.CustomersRepositoryClient
 import tech.volkov.nextdoorfarm.backend.retrofit.RetrofitBuilder
 import javax.inject.Inject
 
 @Suppress("BlockingMethodInNonBlockingContext")
 class CustomerRepository @Inject constructor() {
 
-    private val client = RetrofitBuilder.retrofit.create(CustomerRepositoryClient::class.java)
+    private val client = RetrofitBuilder.retrofit.create(CustomersRepositoryClient::class.java)
 
     suspend fun getCustomer(token: String): CustomerAndOrdersDto? = withContext(Dispatchers.IO) {
         return@withContext try {

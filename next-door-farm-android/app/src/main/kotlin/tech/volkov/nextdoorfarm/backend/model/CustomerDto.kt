@@ -3,7 +3,7 @@ package tech.volkov.nextdoorfarm.backend.model
 data class CustomerAndOrdersDto(
     val id: String,
     val firstName: String,
-    val lastName: String,
+    val secondName: String,
     val address: String,
     val username: String,
     val email: String,
@@ -14,7 +14,7 @@ data class CustomerAndOrdersDto(
 data class CustomerOrder(
     val id: String,
     val products: List<Product>,
-    val status: OrderStatus = OrderStatus.FILLING_IN
+    val status: String
 )
 
 enum class OrderStatus {
@@ -35,7 +35,7 @@ data class Product(
 data class CustomerDto(
     val id: Long? = null,
     val firstName: String,
-    val lastName: String,
+    val secondName: String,
     val address: String,
     val username: String,
     val email: String,

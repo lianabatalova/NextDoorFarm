@@ -39,7 +39,7 @@ class CustomerProfileEditPresenter : MvpPresenter<CustomerProfileEditView>() {
     ) = uiScope.launch {
         val customerDto = CustomerDto(
             firstName = firstName,
-            lastName = lastName,
+            secondName = lastName,
             address = address,
             username = username,
             email = email,
@@ -55,6 +55,6 @@ class CustomerProfileEditPresenter : MvpPresenter<CustomerProfileEditView>() {
 
     companion object {
         private val uiScope = CoroutineScope(Dispatchers.Main)
-        private const val USER_GET_ERROR = "Не удалось загрузить пользователя"
+        private const val USER_GET_ERROR = "Failed to load customer"
     }
 }
